@@ -142,3 +142,41 @@ MAIN STYLES
   color: var(--clr-white);
   padding: 0.5rem 1rem;
 }
+
+.section {
+  padding: 5rem 0;
+  width: 100%;
+}
+.section-center {
+  width: 90%;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95%;
+  }
+}
+
+.pagination {
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+.container {
+  max-width: var(--max-width);
+}
+
+.products-slider {
+  background: var(--clr-grey-10);
+}
+
+.title .underline {
+  width: 6rem;
+  height: 0.25rem;
+  background: #49a6e9;
+  background: var(--clr-primary-5);
+  margin-left: auto;
+  margin-right: auto;
+}
