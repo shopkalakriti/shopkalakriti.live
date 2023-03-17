@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   Row,
   Col,
@@ -10,61 +10,62 @@ import {
   Button,
   Form,
   Container,
-} from 'react-bootstrap';
-import Rating from '../components/Rating';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import Meta from '../components/Meta';
+} from 'react-bootstrap'
+import Rating from '../components/Rating'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 import {
   listProductDetails,
   createProductReview,
-} from '../actions/productActions';
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants';
+} from '../actions/productActions'
+import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = ({ history, match }) => {
-  const [qty, setQty] = useState(1);
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
+  const [qty, setQty] = useState(1)
+  const [rating, setRating] = useState(0)
+  const [comment, setComment] = useState('')
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+  const productDetails = useSelector((state) => state.productDetails)
+  const { loading, error, product } = productDetails
+  console.log(product)
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
-  const productReviewCreate = useSelector((state) => state.productReviewCreate);
+  const productReviewCreate = useSelector((state) => state.productReviewCreate)
   const {
     success: successProductReview,
     loading: loadingProductReview,
     error: errorProductReview,
-  } = productReviewCreate;
+  } = productReviewCreate
 
   useEffect(() => {
     if (successProductReview) {
-      setRating(0);
-      setComment('');
+      setRating(0)
+      setComment('')
     }
     if (!product._id || product._id !== match.params.id) {
-      dispatch(listProductDetails(match.params.id));
-      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+      dispatch(listProductDetails(match.params.id))
+      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
-  }, [dispatch, match, successProductReview]);
+  }, [dispatch, match, successProductReview])
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`);
-  };
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
+  }
 
   const submitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     dispatch(
       createProductReview(match.params.id, {
         rating,
         comment,
       })
-    );
-  };
+    )
+  }
 
   return (
     <Container>
@@ -97,6 +98,9 @@ const ProductScreen = ({ history, match }) => {
                 <ListGroup.Item>
                   Description: {product.description}
                 </ListGroup.Item>
+                <ListGroup.Item>
+                  <span className="bold">Brand:</span> {product.brand}
+                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
@@ -104,8 +108,8 @@ const ProductScreen = ({ history, match }) => {
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
-                      <Col>Price:</Col>
-                      <Col>
+                      <Col className="left-center">Price:</Col>
+                      <Col className="left-center">
                         <strong>&#8377;{product.price}</strong>
                       </Col>
                     </Row>
@@ -113,9 +117,15 @@ const ProductScreen = ({ history, match }) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
-                      <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                      <Col className="left-center">Availability:</Col>
+                      <Col className="left-center">
+                        {product.countInStock >= 5 ? (
+                          'In Stock'
+                        ) : product.countInStock > 0 ? (
+                          <span className="warning pad-5 ">{`Only ${product.countInStock} left!`}</span>
+                        ) : (
+                          <span className="dull pad-5 ">Out Of Stock</span>
+                        )}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -123,8 +133,8 @@ const ProductScreen = ({ history, match }) => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
-                        <Col>
+                        <Col className="left-center">Qty</Col>
+                        <Col className="left-center">
                           <Form.Control
                             as="select"
                             value={qty}
@@ -227,7 +237,7 @@ const ProductScreen = ({ history, match }) => {
         </>
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default ProductScreen;
+export default ProductScreen
