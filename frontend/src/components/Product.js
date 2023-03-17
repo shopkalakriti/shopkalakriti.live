@@ -10,14 +10,14 @@ const Product = ({ product }) => {
   }
 
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card className="my-3 p-3 rounded product_card">
       <Link to={`/product/${product._id}`}>
-        <img className="card_img" src={product.image} />
+        <img className="product_card_img" src={product.image} />
       </Link>
 
       <Card.Body>
         <Link to={`/product/${product._id}`}>
-          <Card.Title as="div">
+          <Card.Title className="product_card_title" as="div">
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
