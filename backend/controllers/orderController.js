@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler'
+import mongoose from 'mongoose'
 import Order from '../models/orderModel.js'
 
 // @desc    Create new order
@@ -110,7 +111,27 @@ const getMyOrders = asyncHandler(async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Admin
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({}).populate('user', 'id name')
+  // console.log(req)
+  let orders
+  if (req.user.isAdminSeller) {
+    orders = await Order.find({}).populate('user', 'id name')
+    // console.log(orders)
+    orders = orders.filter((order) => {
+      const orderItems = order.orderItems.filter((product) => {
+        console.log(
+          mongoose.Types.ObjectId(req.user.id).equals(product.sellerId)
+        )
+        return mongoose.Types.ObjectId(req.user.id).equals(product.sellerId)
+      })
+
+      order.orderItems = orderItems
+      return orderItems.length > 0
+    })
+    console.log(orders)
+  } else {
+    orders = await Order.find({}).populate('user', 'id name')
+  }
+  // console.log(orders)
   res.json(orders)
 })
 

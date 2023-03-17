@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler'
+import mongoose from 'mongoose'
 import Product from '../models/productModel.js'
 
 // @desc    Fetch all products
@@ -22,6 +23,42 @@ const getProducts = asyncHandler(async (req, res) => {
     .limit(pageSize)
     .skip(pageSize * (page - 1))
 
+  res.json({ products, page, pages: Math.ceil(count / pageSize) })
+})
+
+// @desc    Fetch seller's products
+// @route   GET /api/products/seller
+// @access  Private/SellerAdmin
+const getSellerProducts = asyncHandler(async (req, res) => {
+  const pageSize = 10
+  const page = Number(req.query.pageNumber) || 1
+
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    : {}
+
+  const count = await Product.countDocuments({ ...keyword })
+
+  const isKeywordEmpty = Object.keys(keyword).length === 0
+  let products
+  if (isKeywordEmpty) {
+    products = await Product.find({})
+      .limit(pageSize)
+      .skip(pageSize * (page - 1))
+    products = products.filter((product) => {
+      return mongoose.Types.ObjectId(req.user.id).equals(product.user)
+    })
+  } else {
+    products = await Product.find({ ...keyword })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1))
+  }
+  // console.log(products)
   res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
@@ -78,15 +115,8 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const {
-    name,
-    price,
-    description,
-    image,
-    brand,
-    category,
-    countInStock,
-  } = req.body
+  const { name, price, description, image, brand, category, countInStock } =
+    req.body
 
   const product = await Product.findById(req.params.id)
 
@@ -159,6 +189,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 
 export {
   getProducts,
+  getSellerProducts,
   getProductById,
   deleteProduct,
   createProduct,
