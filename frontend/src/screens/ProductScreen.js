@@ -9,6 +9,7 @@ import {
   Card,
   Button,
   Form,
+  Container,
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import Message from '../components/Message';
@@ -66,7 +67,7 @@ const ProductScreen = ({ history, match }) => {
   };
 
   return (
-    <>
+    <Container>
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
@@ -225,7 +226,7 @@ const ProductScreen = ({ history, match }) => {
           </Row>
         </>
       )}
-    </>
+    </Container>
   );
 };
 
