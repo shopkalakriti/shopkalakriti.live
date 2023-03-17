@@ -1,9 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
-import Rating from './Rating';
+import React from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { Card, Button } from 'react-bootstrap'
+import Rating from './Rating'
 
 const Product = ({ product }) => {
+  const history = useHistory()
+  const addToCartHandler = () => {
+    history.push(`/cart/${product._id}?qty=${1}`)
+  }
+
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${product._id}`}>
@@ -25,9 +30,17 @@ const Product = ({ product }) => {
         </Card.Text>
 
         <Card.Text as="h3">&#8377;{product.price}</Card.Text>
+        <Button
+          onClick={addToCartHandler}
+          className="btn-block"
+          type="button"
+          disabled={product.countInStock === 0}
+        >
+          {product.countInStock !== 0 ? 'Add To Cart' : 'Sold Out!'}
+        </Button>
       </Card.Body>
     </Card>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product
