@@ -1,13 +1,11 @@
-
-import React, { useEffect } from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button, Container } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import { listOrders } from '../actions/orderActions';
-import { Link } from 'react-router-dom';
-
+import React, { useEffect } from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Table, Button, Container } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { listOrders } from '../actions/orderActions'
+import { Link } from 'react-router-dom'
 
 const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -38,8 +36,7 @@ const OrderListScreen = ({ history }) => {
         <>
           <Message>
             No orders till now.{' '}
-            <
-            style={{ textDecoration: 'underline' }} to="/">
+            <Link style={{ textDecoration: 'underline' }} to="/">
               Go Back
             </Link>
           </Message>
