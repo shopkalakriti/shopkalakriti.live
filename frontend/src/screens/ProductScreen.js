@@ -43,6 +43,11 @@ const ProductScreen = ({ history, match }) => {
   } = productReviewCreate
 
   useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      // behavior: 'smooth',
+    })
     if (successProductReview) {
       setRating(0)
       setComment('')
