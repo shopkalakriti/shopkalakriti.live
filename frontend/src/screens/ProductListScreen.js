@@ -12,6 +12,7 @@ import {
   createProduct,
 } from '../actions/productActions';
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
+import { Link } from 'react-router-dom';
 
 const ProductListScreen = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
@@ -93,6 +94,15 @@ const ProductListScreen = ({ history, match }) => {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
+      ) : products.length === 0 ? (
+        <>
+          <Message>
+            You haven't added any products.{' '}
+            <Link style={{ textDecoration: 'underline' }} to="/">
+              Go Back
+            </Link>
+          </Message>
+        </>
       ) : (
         <>
           <Table striped bordered hover responsive className="table-sm">

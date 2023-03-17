@@ -1,5 +1,6 @@
 {
   "files": {
+
     "main.css": "/static/css/main.df5d8bd6.css",
     "main.js": "/static/js/main.85e45be6.js",
     "static/media/about-img.jpg": "/static/media/about-img.05f53a00f4be9b3b8cad.jpg",
@@ -11,5 +12,6 @@
   "entrypoints": [
     "static/css/main.df5d8bd6.css",
     "static/js/main.85e45be6.js"
+
   ]
 }
