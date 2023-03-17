@@ -103,7 +103,9 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 // @route   GET /api/orders/myorders
 // @access  Private
 const getMyOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ user: req.user._id })
+  const orders = await Order.find({ user: req.user._id }).sort({
+    createdAt: 'desc',
+  })
   res.json(orders)
 })
 
@@ -114,7 +116,9 @@ const getOrders = asyncHandler(async (req, res) => {
   // console.log(req)
   let orders
   if (req.user.isAdminSeller) {
-    orders = await Order.find({}).populate('user', 'id name')
+    orders = await Order.find({})
+      .sort({ createdAt: 'desc' })
+      .populate('user', 'id name')
     // console.log(orders)
     orders = orders.filter((order) => {
       const orderItems = order.orderItems.filter((product) => {
@@ -129,7 +133,9 @@ const getOrders = asyncHandler(async (req, res) => {
     })
     console.log(orders)
   } else {
-    orders = await Order.find({}).populate('user', 'id name')
+    orders = await Order.find({})
+      .sort({ createdAt: 'desc' })
+      .populate('user', 'id name')
   }
   // console.log(orders)
   res.json(orders)

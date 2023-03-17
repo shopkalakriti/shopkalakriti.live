@@ -6,7 +6,7 @@ import Product from '../models/productModel.js'
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 12
+  const pageSize = 8
   const page = Number(req.query.pageNumber) || 1
 
   const keyword = req.query.keyword
@@ -49,6 +49,7 @@ const getSellerProducts = asyncHandler(async (req, res) => {
   let products
   if (isKeywordEmpty) {
     products = await Product.find({})
+      .sort({ createdAt: 'desc' })
       .limit(pageSize)
       .skip(pageSize * (page - 1))
     products = products.filter((product) => {
