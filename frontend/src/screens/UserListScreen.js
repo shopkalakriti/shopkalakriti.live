@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { listUsers, deleteUser } from '../actions/userActions';
+import { Link } from 'react-router-dom';
 
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -39,6 +40,15 @@ const UserListScreen = ({ history }) => {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
+      ) : users.length === 0 ? (
+        <>
+          <Message>
+            No users till now.{' '}
+            <Link style={{ textDecoration: 'underline' }} to="/">
+              Go Back
+            </Link>
+          </Message>
+        </>
       ) : (
         <Table striped bordered hover responsive className="table-sm">
           <thead>

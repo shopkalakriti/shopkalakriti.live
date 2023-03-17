@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import { Link } from 'react-router-dom';
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('');
@@ -119,6 +120,15 @@ const ProfileScreen = ({ location, history }) => {
             <Loader />
           ) : errorOrders ? (
             <Message variant="danger">{errorOrders}</Message>
+          ) : orders.length === 0 ? (
+            <>
+              <Message>
+                No orders till now.{' '}
+                <Link style={{ textDecoration: 'underline' }} to="/">
+                  Go Back
+                </Link>
+              </Message>
+            </>
           ) : (
             <Table striped bordered hover responsive className="table-sm">
               <thead>

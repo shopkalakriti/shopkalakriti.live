@@ -21,7 +21,7 @@ const Contact = () => {
           {contactItems.map((item) => (
             <div key={item.id} className="contact-item">
               <span>{item.icon}</span>
-              <h4>{item.title}:</h4>
+              <h5>{item.title}:</h5>
               <p>{item.description}</p>
             </div>
           ))}
@@ -115,11 +115,11 @@ const ContactInfo = styled.article`
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    border-top: 1px solid #191919;
+    border-bottom: 1px solid #ccc;
     padding: 1.5rem 0;
 
     &:last-child {
-      border-bottom: 1px solid #191919;
+      border-bottom: none;
     }
 
     span {
@@ -138,7 +138,7 @@ const ContactInfo = styled.article`
       }
     }
 
-    h4,
+    h5,
     p {
       margin-bottom: 0;
     }
