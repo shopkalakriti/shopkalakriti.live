@@ -25,7 +25,7 @@ const ProductCarousel = () => {
       <Carousel pause="hover" className="home-slider-bg">
         {products.map((product) => (
           <Carousel.Item key={product._id}>
-            <Link to={`/product/${product._id}`}>
+            <Link className="carousel_in" to={`/product/${product._id}`}>
               <Image src={product.image} alt={product.name} fluid />
               <span className="carousel-price-tag">&#8377;{product.price}</span>
               <Carousel.Caption className="carousel-caption">

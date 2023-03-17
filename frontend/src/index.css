@@ -98,6 +98,8 @@ h2 {
 
 .carousel img {
   height: 300px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
   padding: 30px;
   margin: 40px;
   border-radius: 50%;
@@ -192,6 +194,11 @@ MAIN STYLES
 .left-center{
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+}
+.center{
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 .dull{
