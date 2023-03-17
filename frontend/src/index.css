@@ -45,7 +45,9 @@ Variables
   --max-width: 1170px;
   --fixed-width: 620px;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 main {
   min-height: 80vh;
 }
@@ -156,6 +158,7 @@ MAIN STYLES
   height: 100%;
   aspect-ratio: 1/1.1;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .product_card_title {
