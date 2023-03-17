@@ -1,3 +1,51 @@
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(1, 83%, 20%);
+  --clr-primary-2: hsl(1, 76%, 26%);
+  --clr-primary-3: hsl(1, 62%, 36%);
+  --clr-primary-4: hsl(1, 65%, 51%);
+  /* primary/main color */
+  --clr-primary-5: hsl(1, 56%, 40%);
+
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(1, 65%, 61%);
+  --clr-primary-7: hsl(1, 52%, 66%);
+  --clr-primary-8: hsl(1, 54%, 76%);
+  --clr-primary-9: hsl(2, 42%, 87%);
+  --clr-primary-10: hsl(0, 54%, 92%);
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fdfdfc;
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-light: hsl(125, 71%, 66%);
+  --clr-black: #101618;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+}
+
 main {
   min-height: 80vh;
 }
@@ -50,4 +98,47 @@ h2 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+}
+
+/* 
+======================
+MAIN STYLES
+======================
+*/
+
+.nav-bar {
+  background: var(--clr-primary-2);
+  color: var(--clr-white);
+  padding: 0.5rem 1rem;
+}
+
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-brand {
+  color: var(--clr-white);
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-brand:hover {
+  color: var(--clr-primary-10);
+}
+
+.dropdown-ite:hover .navbar-light .navbar-nav .nav-link {
+  color: var(--clr-white);
+}
+
+.btn-primary,
+.page-item.active .page-link {
+  background: var(--clr-primary-5);
+  border-color: var(--clr-primary-5);
+}
+
+.nav-toggle {
+  background-color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+}
+
+.home-slider-bg {
+  background: var(--clr-primary-5);
+  color: var(--clr-white);
+  padding: 0.5rem 1rem;
 }
