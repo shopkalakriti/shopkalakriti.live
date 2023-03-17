@@ -165,6 +165,26 @@ MAIN STYLES
   text-overflow: ellipsis;
 }
 
+@media (max-width: 481px) {
+  .product_cards_container {
+    padding: 0 0.5rem;
+  }
+
+  .product_cards_container .p-3 {
+    padding: 0 !important;
+  }
+  .product_card .btn {
+    padding: 0.1rem;
+  }
+  .product_card {
+    font-size: 0.65rem;
+  }
+
+  .product_card .card-body {
+    padding: 0.5rem;
+  }
+}
+
 .section {
   padding: 5rem 0;
   width: 100%;
