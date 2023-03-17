@@ -1,7 +1,7 @@
 {
   "name": "kalakriti",
   "version": "1.0.0",
-  "description": "kalakriti's shopping cart app",
+  "description": "कलाkriti is an e-commerce platform that seeks to improve the online market for small-town and rural handicrafts companies. By offering a shared platform for the production, marketing, and sale of high-quality handicrafts and products, this application seeks to promote the Indian handicraft industry globally.",
   "main": "server.js",
   "type": "module",
   "scripts": {
