@@ -84,6 +84,17 @@ h2 {
 .carousel-caption h2 {
   color: #fff;
 }
+.carousel-price-tag{
+  position: absolute;
+  top: 10px;
+  right:10px;
+  color: #000000;
+  background-color: #f0ad4e;
+  padding: 10px;
+  height: max-content;
+  border-radius: 10px;
+  font-size: 2vw;
+}
 
 .carousel img {
   height: 300px;
@@ -143,7 +154,9 @@ MAIN STYLES
   background: var(--clr-primary-5);
   color: var(--clr-white);
   padding: 0.5rem 1rem;
+  border-radius: 5px;
 }
+
 .product_cards_container {
   display: flex;
   justify-content: center;
