@@ -1,6 +1,8 @@
-# KalaKriti eCommerce Platform
+# KalaKriti - An E-Commerce for Artisans
 
-> eCommerce platform built with the MERN stack & Redux.
+कलाKriti is an e-commerce platform that seeks to improve the online market for small-town and rural handicrafts companies. By offering a shared platform for the production, marketing, and sale of high-quality handicrafts and products, this application seeks to promote the Indian handicraft industry globally.
+
+> Built with the MERN stack & Redux.
 
 ## Features
 
