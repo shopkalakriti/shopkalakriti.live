@@ -84,7 +84,6 @@ const OrderScreen = ({ match, history }) => {
   const deliverHandler = () => {
     dispatch(deliverOrder(order))
   }
-
   return loading ? (
     <Loader />
   ) : error ? (
@@ -201,17 +200,21 @@ const OrderScreen = ({ match, history }) => {
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
                     <Loader />
-                  ) : (
+                  ) : userInfo._id === order.user._id ? (
                     <PayPalButton
                       amount={order.totalPrice}
                       onSuccess={successPaymentHandler}
                     />
+                  ) : (
+                    <Button type="button" className="btn btn-block" disabled>
+                      Mark As Delivered
+                    </Button>
                   )}
                 </ListGroup.Item>
               )}
               {loadingDeliver && <Loader />}
               {userInfo &&
-                userInfo.isAdmin &&
+                (userInfo.isAdmin || userInfo.isAdminSeller) &&
                 order.isPaid &&
                 !order.isDelivered && (
                   <ListGroup.Item>
