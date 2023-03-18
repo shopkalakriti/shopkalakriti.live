@@ -1,18 +1,22 @@
-import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { Card, Button } from 'react-bootstrap'
-import Rating from './Rating'
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
+import Rating from './Rating';
 
 const Product = ({ product }) => {
-  const history = useHistory()
+  const history = useHistory();
   const addToCartHandler = () => {
-    history.push(`/cart/${product._id}?qty=${1}`)
-  }
+    history.push(`/cart/${product._id}?qty=${1}`);
+  };
 
   return (
     <Card className="my-3 p-3 rounded product_card">
       <Link to={`/product/${product._id}`}>
-        <img className="product_card_img" src={product.image} />
+        <img
+          className="product_card_img"
+          src={product.image}
+          alt={product.name}
+        />
       </Link>
 
       <Card.Body>
@@ -21,6 +25,8 @@ const Product = ({ product }) => {
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
+
+        <Card.Text as="p">Sold by: {product.brand}</Card.Text>
 
         <Card.Text as="div">
           <Rating
@@ -40,7 +46,7 @@ const Product = ({ product }) => {
         </Button>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;
