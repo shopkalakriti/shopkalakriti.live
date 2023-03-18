@@ -27,6 +27,13 @@ const HomeScreen = ({ match }) => {
     dispatch(listProducts(keyword, pageNumber));
   }, [dispatch, keyword, pageNumber]);
 
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'auto',
+    })
+  }, [pageNumber])
   return (
     <>
       <section className="products-slider section">
