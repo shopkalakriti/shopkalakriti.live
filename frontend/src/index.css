@@ -343,7 +343,7 @@ MAIN STYLES
 
 @media (max-width: 480px) {
   .blog {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .blog img {
     display: none;
@@ -382,6 +382,24 @@ MAIN STYLES
   font-size: 0.85rem;
   margin-top: 1rem;
   margin-bottom: 0;
+}
+
+.blog-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.blog-footer .blog-date {
+  margin-top: 0;
+}
+
+@media (max-width: 480px) {
+  .blog-title {
+    font-size: 1.15rem;
+  }
+  .blog-description {
+    font-size: 0.75rem;
+  }
 }
 
 /* SINGLE BLOG */
