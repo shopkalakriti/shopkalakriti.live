@@ -15,11 +15,24 @@
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
     crossorigin="anonymous" />
   <title>KalaKriti - ECommerce for Artisans</title>
+  <script src="registerWorker.js" defer></script>
 </head>
+<script src="//code.tidio.co/ls1hjnpvhwb1kiuad47c3krkgnrtdjf5.js" async></script>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('./serviceWorker.js')
+          .then((reg) => console.log('Success: ', reg.scope))
+          .catch((err) => console.log('Failure: ', err));
+      });
+    }
+  </script>
 </body>
 
 </html>

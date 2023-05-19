@@ -41,6 +41,12 @@ const Header = () => {
           <Navbar.Collapse className="flex-gap" id="basic-navbar-nav">
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
+              <LinkContainer to="/blog">
+                <Nav.Link>
+                  <i className="fas fa-blog"></i> Blog
+                </Nav.Link>
+              </LinkContainer>
+
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i> Cart
